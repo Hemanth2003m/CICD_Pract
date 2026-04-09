@@ -25,14 +25,10 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
-            set -e
 
-            cd /home/ubuntu/projects/CICD_Pract
+          
+           cd ~/Projects/CICD_Pract
 
-            # Ensure repo exists (first-time safety)
-            if [ ! -d ".git" ]; then
-              git clone https://github.com/Hemanth2003m/CICD_Pract.git
-            fi
 
             git pull origin main
 
